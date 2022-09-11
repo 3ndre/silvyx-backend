@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //authenticted route
 app.get('/secret', authenticateToken, async(req,res) => {
-  res.send(`Welcome address ${req.authData.verifiedAddress}`)
+  res.json({data: `Welcome address ${req.authData.verifiedAddress}`})
 })    
 
 app.get('/', (req,res) => {
