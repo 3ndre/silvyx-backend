@@ -28,7 +28,6 @@ app.use(express.json());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static('public'))
 
 
 //authenticted route
@@ -36,6 +35,9 @@ app.get('/secret', authenticateToken, async(req,res) => {
   res.send(`Welcome address ${req.authData.verifiedAddress}`)
 })    
 
+app.get('/', (req,res) => {
+  res.send('Silvyx network')
+})
 
 //routes
 app.use('/api/users', require('./routes/api/users'));

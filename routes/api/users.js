@@ -7,7 +7,7 @@ router.post(
   '/',
   async (req, res) => {
 
-    const { wallet, signature } = req.body;
+    const { wallet, firstname, lastname, location } = req.body;
 
     try {
       let user = await User.findOne({ wallet });
@@ -21,7 +21,9 @@ router.post(
 
       user = new User({
         wallet,
-        signature,
+        firstname,
+        lastname,
+        location
       });
 
       await user.save();

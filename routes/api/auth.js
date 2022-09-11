@@ -45,7 +45,7 @@ router.post('/verify', async (req,res) => {
   
   
   const getSignMessage = (address, nonce) => {
-    return `Please sign this message for address ${address}:\n\n${nonce}`
+    return `Welcome to Silvyx!\n\nClick to sign in and accept the Silvyx Terms of Service\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\nWallet address:\n${address}\n\nNonce:\n${nonce}`
   }
   
   
