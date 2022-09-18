@@ -22,6 +22,31 @@ router.get('/me', authenticateToken, async (req, res) => {
 });
 
 
+//Updating user info
+router.put(
+  '/me',
+  async (req, res) => {
+
+    const id = req.header('x-auth-id');
+    const updatedData = req.body;
+    const options = { new: true };
+
+    try {
+      
+    const result = await User.findByIdAndUpdate(
+        id, updatedData, options
+    )
+
+     
+      res.json(result);
+
+    } catch (err) {
+      res.status(400).json({ message: err.message })
+    }
+  }
+);
+
+
 
 //Creating a user
 router.post(
