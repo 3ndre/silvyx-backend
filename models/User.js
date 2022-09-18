@@ -11,6 +11,12 @@ const UserSchema = new mongoose.Schema({
   lastname: {
     type: String,
   },
+  teller: {
+    type: Boolean,
+  },
+  tellerfund: {
+    type: Number,
+  },
   location:{
     type: String,
   },
