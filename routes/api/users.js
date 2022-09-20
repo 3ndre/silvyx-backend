@@ -53,7 +53,7 @@ router.post(
   '/',
   async (req, res) => {
 
-    const { wallet, firstname, lastname, teller, tellerfund, location } = req.body;
+    const { wallet, firstname, lastname, teller, tellerfund, requests, accepted, location } = req.body;
 
     try {
       let user = await User.findOne({ wallet });
@@ -70,6 +70,8 @@ router.post(
         lastname,
         teller,
         tellerfund,
+        requests,
+        accepted,
         location
       });
 

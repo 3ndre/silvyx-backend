@@ -17,6 +17,12 @@ const UserSchema = new mongoose.Schema({
   tellerfund: {
     type: Number,
   },
+  requests: {
+    type: Array,
+  },
+  accepted: {
+    type: Array,
+  },
   location:{
     type: String,
   },
