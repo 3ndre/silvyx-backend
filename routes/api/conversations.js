@@ -31,6 +31,21 @@ router.get("/:userId", authenticateToken, async (req, res) => {
   }
 });
 
+
+
+//get conversastion information by conversation ID
+
+router.get("/id/:conversationId", authenticateToken, async (req, res) => {
+  try {
+    const conversation = await Conversation.findById(req.params.conversationId);
+    res.status(200).json(conversation);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
 // get conv includes two userId
 
 router.get("/find/:firstUserId/:secondUserId", authenticateToken, async (req, res) => {

@@ -22,6 +22,22 @@ router.get('/me', authenticateToken, async (req, res) => {
 });
 
 
+
+
+//Getting userinfo with Id
+router.get('/:userId', authenticateToken, async (req, res) => {
+
+ 
+  try {
+    const user = await User.findById(req.params.userId).sort({ date: -1 });
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Not authorized');
+  }
+});
+
+
 //Updating user info
 router.put(
   '/me',
