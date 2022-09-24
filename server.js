@@ -35,8 +35,9 @@ app.get('/secret', authenticateToken, async(req,res) => {
   res.json({data: `Welcome address ${req.authData.verifiedAddress}`})
 })    
 
+
 app.get('/', (req,res) => {
-  res.send('Silvyx network')
+  res.json({data: "Silvyx Backend | P2P withdrawal network"})
 })
 
 //routes

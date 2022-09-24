@@ -8,6 +8,7 @@ const authenticateToken = require('../../middleware/authenticateToken');
 router.post("/", authenticateToken, async (req, res) => {
   const newConversation = new Conversation({
     members: [req.body.senderId, req.body.receiverId],
+    status: req.body.status,
   });
 
   try {
@@ -17,6 +18,31 @@ router.post("/", authenticateToken, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+//Updating conversation
+router.put(
+  '/',
+  async (req, res) => {
+
+    const id = req.header('x-auth-id');
+    const updatedData = req.body;
+    const options = { new: true };
+
+    try {
+      
+    const result = await Conversation.findByIdAndUpdate(
+        id, updatedData, options
+    )
+
+     
+      res.json(result);
+
+    } catch (err) {
+      res.status(400).json({ message: err.message })
+    }
+  }
+);
 
 //get conversastion of a user
 
